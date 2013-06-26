@@ -4,12 +4,14 @@ keystone_nodes=($(knife_node_find 'roles:keystone-server' FQDN))
     echo "Could not find keystone"
     exit 1
 }
+echo "Found keystone at ${keystone_nodes}"
 
 glance_nodes=($(knife_node_find 'roles:glance-server' FQDN))
 [[ $glance_nodes ]] || {
     echo "Could not find glance!"
     exit 1
 }
+echo "Found glance at ${glance_nodes}"
 
 export OS_USERNAME=admin
 export OS_PASSWORD=crowbar
